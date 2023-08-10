@@ -1,0 +1,18 @@
+.wrapper {
+    background-image: url('../../assets/valorant-homebg.jpg');
+    background-repeat: no-repeat;
+    background-position: left;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+}
+
+.chat-box-wrapper {
+    display: flex;
+    position: absolute;
+    top: 10vh;
+    left: 20vw;
+    right: 20vw;
+    bottom: 10vh;
+}

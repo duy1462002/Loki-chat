@@ -1,0 +1,58 @@
+.wrapper {
+    background-image: url('../../assets/valorant-bigsize.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    position: relative;
+    color: var(--text-color);
+    
+}
+
+.form-login {
+    position: absolute;
+    right: 32px;
+    bottom: 100px;
+    width: 350px;
+    padding: 36px 18px 18px;
+    background-color: #151818;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.heading {
+    font-size: 20px;
+    margin-bottom: 36px;
+}
+
+.input {
+    background-color: #28303c;
+    color: var(--text-color);
+    border: none;
+    height: 46px;
+    margin-bottom: 18px;
+    input {
+        background-color: transparent;
+    }
+}
+
+.login-button {
+    background-color: #af1212;
+
+    &:hover {
+        background-color: #af1212!important;
+        opacity: 0.9;
+    }
+}
+
+.link-register {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 10px;
+    margin-top: 24px;
+    opacity: 0.8;
+    text-transform: uppercase;
+}
