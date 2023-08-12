@@ -1,0 +1,28 @@
+.wrapper {
+    width: 7%;
+    border-radius: 10px 0 0 10px;
+    padding: 8px;
+    border-right: 1px solid rgb(51, 50, 50);
+    background-color: #151818;
+    text-align: center;
+    .avatar {
+        background-image: url('../../assets/c3qo.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 40px;
+        height: 40px;
+        border-radius: 99px;
+        cursor: pointer;
+    }
+}
+
+.logout-item {
+    width: 120px;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    &:hover {
+       background-color: rgb(78, 78, 78);
+    }
+}
