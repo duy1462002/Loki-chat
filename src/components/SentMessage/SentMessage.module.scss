@@ -1,0 +1,19 @@
+.wrapper {
+    margin: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+    p {
+        padding: 8px;
+        background-color: #25282a;
+        border-radius: 6px;
+        margin-right: 4px;
+        max-width: 80%;
+    }
+
+    img {
+        width: 30px;
+        border-radius: 99px;
+    }
+}

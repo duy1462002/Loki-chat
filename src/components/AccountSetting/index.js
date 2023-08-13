@@ -6,8 +6,11 @@ import { LogoutOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '~/firebase';
+import {useDispatch} from 'react-redux'
+import * as actions from '~/store/actions' 
 const cx = classNames.bind(styles);
 const AccountSetting = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
 
@@ -18,6 +21,8 @@ const AccountSetting = () => {
     const handleLogout = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
+            dispatch(actions.setIsLogin(false));
+
             navigate('/login')
           }).catch((error) => {
             // An error happened.

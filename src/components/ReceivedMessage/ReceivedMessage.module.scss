@@ -1,0 +1,20 @@
+.wrapper {
+    margin: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+    p {
+        padding: 8px;
+        background-color: green;
+        border-radius: 6px;
+        max-width: 80%;
+        overflow: hidden;
+    }
+    
+    img {
+        margin-right: 4px;
+        width: 30px;
+        border-radius: 99px;
+    }
+}

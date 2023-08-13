@@ -3,6 +3,8 @@ import styles from './ChatBox.module.scss';
 import classNames from 'classnames/bind';
 import { FileImageFilled, SendOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
+import SentMessage from '../SentMessage';
+import ReceivedMessage from '../ReceivedMessage';
 
 const cx = classNames.bind(styles);
 const ChatBox = () => {
@@ -17,6 +19,12 @@ const ChatBox = () => {
                         <p>online</p>
                     </div>
                 </div>
+            </div>
+
+            <div className={cx('messages')}>
+                <SentMessage/>
+                <ReceivedMessage/>
+                
             </div>
 
             <div className={cx('chat-message')}>

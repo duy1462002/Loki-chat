@@ -10,10 +10,13 @@ import className from 'classnames/bind';
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '~/firebase';
+import {useDispatch} from 'react-redux'
+import * as actions from '~/store/actions' 
 const cx = className.bind(styles);
 
 const Login = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -30,6 +33,7 @@ const Login = () => {
                 // ...
                 console.log(user);
                 alert('Đăng nhập thành công!')
+                dispatch(actions.setIsLogin(true));
                 navigate('/');
             })
             .catch((error) => {
