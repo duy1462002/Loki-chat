@@ -1,0 +1,23 @@
+.wrapper {
+    width: 180px;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    &:hover {
+       background-color: rgb(78, 78, 78);
+    }
+}
+
+.name-changing {
+    margin-bottom: 24px;
+
+    h3 {
+        color: black;
+    }
+}
+
+.avatar-upload {
+    h3 {
+        color: black;
+    }
+}

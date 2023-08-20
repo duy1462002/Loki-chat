@@ -12,8 +12,7 @@ const cx = classNames.bind(styles);
 
 const Home = () => {
     const navigate = useNavigate();
-    const { isLogin } = useSelector((state) => state);
-    console.log(isLogin);
+    const isLogin  = useSelector((state) => state.isLogin);
 
     return (
         <div>

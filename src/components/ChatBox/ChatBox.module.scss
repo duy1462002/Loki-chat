@@ -6,6 +6,7 @@
 }
 
 .heading {
+    height: 54px;
     padding: 6px;
     display: flex;
     align-items: center;
@@ -20,6 +21,7 @@
 }
 
 .info {
+    margin-left: 12px;
     strong {
         font-size: 14px;
     }
@@ -44,14 +46,16 @@
 }
 
 .chat-message {
-    display: flex;
-    position: absolute;
-    align-items: center;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 8px;
-
+    form {
+        height: 46px;
+        display: flex;
+        position: absolute;
+        align-items: center;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 8px;
+    }
 }
 
 .icon {
@@ -67,7 +71,6 @@
     input {
         background-color: transparent;
     }
-
 }
 
 .messages {

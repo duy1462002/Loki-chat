@@ -9,9 +9,10 @@ import styles from './Login.module.scss';
 import className from 'classnames/bind';
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '~/firebase';
+import { auth, database } from '~/firebase';
 import {useDispatch} from 'react-redux'
 import * as actions from '~/store/actions' 
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 const cx = className.bind(styles);
 
 const Login = () => {
@@ -27,12 +28,16 @@ const Login = () => {
 
     const handleLogin = () => {
         signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
+            .then(async (userCredential) => {
                 // Signed in
                 const user = userCredential.user;
-                // ...
-                console.log(user);
-                alert('Đăng nhập thành công!')
+                const docSnap = await getDoc(doc(database, "users", user.uid));
+                if(docSnap.exists()) {
+                    dispatch(actions.setCurrentUser(docSnap.data()));
+                }
+                await updateDoc(doc(database, 'users', user.uid), {
+                    isOnline: true,
+                })
                 dispatch(actions.setIsLogin(true));
                 navigate('/');
             })

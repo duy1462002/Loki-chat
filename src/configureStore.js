@@ -1,12 +1,12 @@
 import { createStore } from 'redux'
 import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 import rootReducer from './store/reducers/rootReducer'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
  
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['isLogin']
+  whitelist: ['isLogin', 'currentUser', 'combinedId']
 }
  
 const persistedReducer = persistReducer(persistConfig, rootReducer)

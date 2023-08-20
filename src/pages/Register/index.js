@@ -5,26 +5,35 @@ import styles from './Register.module.scss';
 import className from 'classnames/bind';
 import { Link, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '~/firebase';
+import { auth, database } from '~/firebase';
+import { doc, setDoc } from 'firebase/firestore';
 const cx = className.bind(styles);
 
 const Register = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const [userName, setUserName] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
         handleRegister();
-    }
+    };
 
     const handleRegister = () => {
         createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {           
+            .then(async (userCredential) => {
                 const user = userCredential.user;
 
-                console.log(user);
+                await setDoc(doc(database, 'users', user.uid), {
+                    uid: user.uid,
+                    email: user.email,
+                    displayName: userName,
+                    isOnline: false,
+                });
+
+                await setDoc(doc(database, 'userChats', user.uid), {});
+                
                 alert('Tạo tài khoản thành công');
                 navigate('/login');
             })
@@ -58,9 +67,11 @@ const Register = () => {
                             )
                         }
                     />
-                    <Input.Password
+                    <Input
                         className={cx('input')}
-                        placeholder="Xác nhận mật khẩu..."
+                        placeholder="Nhập tên người dùng..."
+                        value={userName}
+                        onChange={e => setUserName(e.target.value)}
                         type="password"
                         iconRender={(visible) =>
                             visible ? (
@@ -72,7 +83,7 @@ const Register = () => {
                     />
                     <Button
                         className={cx('login-button')}
-                        htmlType='submit'
+                        htmlType="submit"
                         type="primary"
                         size="large"
                         icon={<ArrowRightOutlined />}
