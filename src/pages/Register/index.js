@@ -72,14 +72,6 @@ const Register = () => {
                         placeholder="Nhập tên người dùng..."
                         value={userName}
                         onChange={e => setUserName(e.target.value)}
-                        type="password"
-                        iconRender={(visible) =>
-                            visible ? (
-                                <EyeTwoTone />
-                            ) : (
-                                <EyeInvisibleOutlined style={{ color: '#dddad6' }} />
-                            )
-                        }
                     />
                     <Button
                         className={cx('login-button')}

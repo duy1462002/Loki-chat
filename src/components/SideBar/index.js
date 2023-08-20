@@ -5,12 +5,12 @@ import { Input } from 'antd';
 import UserItem from '~/components/UserItem';
 import { SearchOutlined } from '@ant-design/icons';
 import {
+    addDoc,
     collection,
     doc,
     getDoc,
     getDocs,
     serverTimestamp,
-    setDoc,
     updateDoc,
 } from 'firebase/firestore';
 import { auth, database } from '~/firebase';
@@ -67,7 +67,7 @@ const SideBar = () => {
 
             if (!res.exists()) {
                 //tạo doc chat trong collection chats
-                await setDoc(doc(database, 'chats', combinedId), {
+                await addDoc(collection(database, 'chats', combinedId), {
                     messages: [],
                 });
             }
