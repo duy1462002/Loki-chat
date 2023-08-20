@@ -5,12 +5,12 @@ import { Input } from 'antd';
 import UserItem from '~/components/UserItem';
 import { SearchOutlined } from '@ant-design/icons';
 import {
-    addDoc,
     collection,
     doc,
     getDoc,
     getDocs,
     serverTimestamp,
+    setDoc,
     updateDoc,
 } from 'firebase/firestore';
 import { auth, database } from '~/firebase';
@@ -64,10 +64,10 @@ const SideBar = () => {
                 : user.uid + auth.currentUser.uid;
         try {
             const res = await getDoc(doc(database, 'chats', combinedId));
-            console.log(res);
+            console.log(res.data());
             if (!res.exists()) {
                 //tạo doc chat trong collection chats
-                await addDoc(collection(database, 'chats', combinedId), {
+                await setDoc(doc(database, 'chats', combinedId), {
                     messages: [],
                 });
             }
@@ -78,7 +78,7 @@ const SideBar = () => {
                 [combinedId + '.userInfo']: {
                     uid: user.uid,
                     displayName: user.displayName,
-                    photoURL: user.photoURL,
+                    photoURL: user.photoURL || null,
                 },
                 [combinedId + '.date']: serverTimestamp(),
             });
@@ -86,7 +86,7 @@ const SideBar = () => {
                 [combinedId + '.userInfo']: {
                     uid: currentUser.uid,
                     displayName: currentUser.displayName,
-                    photoURL: currentUser.photoURL,
+                    photoURL: currentUser.photoURL || null,
                 },
                 [combinedId + '.date']: serverTimestamp(),
             });
