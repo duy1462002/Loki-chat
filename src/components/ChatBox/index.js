@@ -27,12 +27,15 @@ const ChatBox = () => {
             const unsub = onSnapshot(doc(database, 'userChats', currentUser.uid), (doc) => {
                 setChatInfo(doc.data());
             });
-            const unsub2 = onSnapshot(doc(database, 'chats', combinedId), (doc) => {
-                setChatHistory(doc.data());
-            });
+            if(combinedId) {
+                const unsub2 = onSnapshot(doc(database, 'chats', combinedId), (doc) => {
+                    setChatHistory(doc.data());
+                });
+                unsub2();
+            }
             return () => {
                 unsub();
-                unsub2();
+                
             };
         };
         getChatInfo();

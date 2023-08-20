@@ -64,7 +64,7 @@ const SideBar = () => {
                 : user.uid + auth.currentUser.uid;
         try {
             const res = await getDoc(doc(database, 'chats', combinedId));
-
+            console.log(res);
             if (!res.exists()) {
                 //tạo doc chat trong collection chats
                 await addDoc(collection(database, 'chats', combinedId), {
